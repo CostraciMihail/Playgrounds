@@ -3,8 +3,7 @@ import CoreGraphics
 import QuartzCore
 import PlaygroundSupport
 
-//************************************************************
-//POINT
+
 public extension Int {
     
     public static func random(lower: Int , upper: Int) -> Int {
@@ -20,18 +19,23 @@ public struct Points {
     
     public func animate(inView containerView: UIView) {
         
+        let startPoint = CGPoint(x: 50, y: 50)
+        
         // x = 50 - 150
         // y = 50 - 250
         var pointPath = UIBezierPath()
-        pointPath = UIBezierPath(ovalIn: CGRect(x: 200, y: 200, width: 1, height: 1))
+        pointPath = UIBezierPath(ovalIn: CGRect(x: startPoint.x,
+                                                y: startPoint.y,
+                                                width: 1,
+                                                height: 1))
         
         for _ in 0..<100 {
             
             var tmpPath = UIBezierPath()
-            tmpPath = UIBezierPath(ovalIn: CGRect(x: CGFloat(Int.random(lower: 50, upper: 150)),
-                                                  y: CGFloat(Int.random(lower: 40, upper: 100)),
-                                                  width: 5,
-                                                  height: 5))
+            tmpPath = UIBezierPath(ovalIn: CGRect(x: CGFloat(Int.random(lower: 50, upper: 65)),
+                                                  y: CGFloat(Int.random(lower: 40, upper: 120)),
+                                                  width: 1,
+                                                  height: 1))
             
             pointPath.append(tmpPath)
         }
@@ -46,7 +50,8 @@ public struct Points {
         
         //EMPTY PATH
         var emptyPath = UIBezierPath()
-        emptyPath = UIBezierPath(ovalIn: CGRect(x: 200, y: 200, width: 0, height: 0))
+        emptyPath = UIBezierPath(ovalIn: CGRect(x: startPoint.x, y: startPoint.y,
+                                                width: 0, height: 0))
         
         //EMPTY LAYER
         let emptyLayer = CAShapeLayer(layer: containerView.layer)

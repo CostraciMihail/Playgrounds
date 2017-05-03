@@ -12,8 +12,8 @@ PlaygroundPage.current.liveView = containerView
 
 //LINE
 //let lineAnimation = Line(inContainerView: containerView)
-//lineAnimation.springWidthAnimation()
 //lineAnimation.widthAnimation()
+//lineAnimation.springWidthAnimation()
 
 
 //POINTS
