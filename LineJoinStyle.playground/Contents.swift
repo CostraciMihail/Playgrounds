@@ -27,6 +27,55 @@ PlaygroundPage.current.liveView = containerView
 
 
 //4. Animate to arc position
+
+public class ArcAnimation: CAKeyframeAnimation {
+//    
+//    public var startAngle: Int
+//    public var endAngle: Int
+
+    
+    public init(startAngle: Double, withEndAngle endAngle: Double) {
+       
+//        self.startAngle = startAngle
+//        self.endAngle = endAngle
+        
+        
+        let arcPath = UIBezierPath(arcCenter:CGPoint(x: 120, y: 200),
+                                   radius: 100,
+                                   startAngle: CGFloat((startAngle*(M_PI/180))),
+                                   endAngle: CGFloat((endAngle*(M_PI/180))),
+                                   clockwise: false)
+        
+        arcPath.lineWidth = 3
+        
+        super.init()
+        
+        self.keyPath = "position"
+        self.duration = 0.5
+        self.beginTime = CACurrentMediaTime() + 0.3;
+        self.path = arcPath.cgPath
+        self.isRemovedOnCompletion = false
+        self.fillMode = kCAFillModeForwards
+        self.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    }
+
+    
+//    public convenience override init() {
+//        
+//        self.init(startAngle: 34, withEndAngle: 23)
+//        
+//    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}
+
+
+
+
+
 let arcPath = UIBezierPath(arcCenter:CGPoint(x: 120, y: 200),
                            radius: 100,
                            startAngle: CGFloat((90*(M_PI/180))),
