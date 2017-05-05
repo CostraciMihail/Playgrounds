@@ -27,126 +27,27 @@ PlaygroundPage.current.liveView = containerView
 
 
 //4. Animate to arc position
-
-public class ArcAnimation: CAKeyframeAnimation {
-//    
-//    public var startAngle: Int
-//    public var endAngle: Int
-
-    
-    public init(startAngle: Double, withEndAngle endAngle: Double) {
-       
-//        self.startAngle = startAngle
-//        self.endAngle = endAngle
-        
-        
-        let arcPath = UIBezierPath(arcCenter:CGPoint(x: 120, y: 200),
-                                   radius: 100,
-                                   startAngle: CGFloat((startAngle*(M_PI/180))),
-                                   endAngle: CGFloat((endAngle*(M_PI/180))),
-                                   clockwise: false)
-        
-        arcPath.lineWidth = 3
-        
-        super.init()
-        
-        self.keyPath = "position"
-        self.duration = 0.5
-        self.beginTime = CACurrentMediaTime() + 0.3;
-        self.path = arcPath.cgPath
-        self.isRemovedOnCompletion = false
-        self.fillMode = kCAFillModeForwards
-        self.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-    }
-
-    
-//    public convenience override init() {
-//        
-//        self.init(startAngle: 34, withEndAngle: 23)
-//        
-//    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
-
-
-
-
-let arcPath = UIBezierPath(arcCenter:CGPoint(x: 120, y: 200),
-                           radius: 100,
-                           startAngle: CGFloat((90*(M_PI/180))),
-                           endAngle: CGFloat((-90*(M_PI/180))),
-                           clockwise: false)
-
-arcPath.lineWidth = 3
-
-let view1 = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+let view1 = UIView(frame: CGRect(x: 120, y: 200, width: 40, height: 40))
 view1.backgroundColor = UIColor.red
 view1.layer.cornerRadius = view1.bounds.size.width/2
 containerView.addSubview(view1)
 
-
-let view2 = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+let view2 = UIView(frame: CGRect(x: 120, y: 200, width: 40, height: 40))
 view2.backgroundColor = UIColor.red
-view2.layer.cornerRadius = view1.bounds.size.width/2
+view2.layer.cornerRadius = view2.bounds.size.width/2
 containerView.addSubview(view2)
 
-let view3 = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+let view3 = UIView(frame: CGRect(x: 120, y: 200, width: 40, height: 40))
 view3.backgroundColor = UIColor.red
-view3.layer.cornerRadius = view1.bounds.size.width/2
+view3.layer.cornerRadius = view3.bounds.size.width/2
 containerView.addSubview(view3)
 
+let view4 = UIView(frame: CGRect(x: 120, y: 200, width: 40, height: 40))
+view4.backgroundColor = UIColor.red
+view4.layer.cornerRadius = view4.bounds.size.width/2
+containerView.addSubview(view4)
 
-let arcPathAnimV1 = CAKeyframeAnimation(keyPath: "position")
-arcPathAnimV1.duration = 0.5
-arcPathAnimV1.beginTime = CACurrentMediaTime() + 0.3;
-arcPathAnimV1.path = arcPath.cgPath
-arcPathAnimV1.isRemovedOnCompletion = false
-arcPathAnimV1.fillMode = kCAFillModeForwards
-arcPathAnimV1.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-
-
-
-print("arcPath.cgPath \(arcPath.cgPath)")
-print("currentPoint \(arcPath.currentPoint)")
-print("boundingBox \(arcPath.cgPath.boundingBox)")
-print("boundingBoxOfPath \(arcPath.cgPath.boundingBoxOfPath)")
-
-let arcPath2 = UIBezierPath(arcCenter:CGPoint(x: 120, y: 200),
-                           radius: 100,
-                           startAngle: CGFloat((90*(M_PI/180))),
-                           endAngle: CGFloat((-40*(M_PI/180))),
-                           clockwise: false)
-
-let arcPathAnimV2 = CAKeyframeAnimation(keyPath: "position")
-arcPathAnimV2.duration = 0.5
-arcPathAnimV2.beginTime = CACurrentMediaTime() + 0.5;
-arcPathAnimV2.path = arcPath2.cgPath
-arcPathAnimV2.isRemovedOnCompletion = false
-arcPathAnimV2.fillMode = kCAFillModeForwards
-arcPathAnimV2.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-
-let arcPath3 = UIBezierPath(arcCenter:CGPoint(x: 120, y: 200),
-                            radius: 100,
-                            startAngle: CGFloat((90*(M_PI/180))),
-                            endAngle: CGFloat((10*(M_PI/180))),
-                            clockwise: false)
-
-let arcPathAnimV3 = CAKeyframeAnimation(keyPath: "position")
-arcPathAnimV3.duration = 0.5
-arcPathAnimV3.path = arcPath3.cgPath
-arcPathAnimV3.beginTime = CACurrentMediaTime() + 0.5;
-arcPathAnimV3.isRemovedOnCompletion = false
-arcPathAnimV3.fillMode = kCAFillModeForwards
-arcPathAnimV3.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-
-
-
-view1.layer.add(arcPathAnimV1, forKey: "arcPositionAnimationV1")
-view2.layer.add(arcPathAnimV2, forKey: "arcPositionAnimationV2")
-view3.layer.add(arcPathAnimV3, forKey: "arcPositionAnimationV3")
-
+view1.layer.add(ArcAnimation(startAngle: 90, withEndAngle: -90, beginTime: 1.5), forKey: "arcPositionAnimationV1")
+view2.layer.add(ArcAnimation(startAngle: 90, withEndAngle: -40, beginTime: 1.5), forKey: "arcPositionAnimationV2")
+view3.layer.add(ArcAnimation(startAngle: 90, withEndAngle: 10, beginTime: 1.5), forKey: "arcPositionAnimationV3")
+view4.layer.add(ArcAnimation(startAngle: 90, withEndAngle: 60, beginTime: 1.5), forKey: "arcPositionAnimationV3")
