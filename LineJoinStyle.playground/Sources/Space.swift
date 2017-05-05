@@ -14,7 +14,7 @@ public struct Space {
         
         containerView.backgroundColor = UIColor.black
         
-        var circlePath = UIBezierPath(ovalIn: CGRect(x: Int.random(lower: 0, upper: 667),
+        let circlePath = UIBezierPath(ovalIn: CGRect(x: Int.random(lower: 0, upper: 667),
                                                      y: Int.random(lower: 0, upper: 667),
                                                      width: 5,
                                                      height: 5))
@@ -37,7 +37,7 @@ public struct Space {
         containerView.layer.addSublayer(circleLayer)
         
         
-        var emptyPath = UIBezierPath(ovalIn: CGRect(x: 375/2, y: 667/2, width: 0, height: 0))
+        let emptyPath = UIBezierPath(ovalIn: CGRect(x: 375/2, y: 667/2, width: 0, height: 0))
         
         for _ in 0..<600 {
             
