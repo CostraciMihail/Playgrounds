@@ -43,8 +43,8 @@ public class ArcSpringAnimation: CAKeyframeAnimation {
         
         let arcPath = UIBezierPath(arcCenter:CGPoint(x: 120, y: 200),
                                    radius: 100,
-                                   startAngle: CGFloat((startAngle*(M_PI/180))),
-                                   endAngle: CGFloat((endAngle*(M_PI/180))),
+                                   startAngle: CGFloat((startAngle*(Double.pi/180))),
+                                   endAngle: CGFloat((endAngle*(Double.pi/180))),
                                    clockwise: false)
         
         arcPath.lineWidth = 3
